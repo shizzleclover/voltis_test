@@ -13,4 +13,17 @@ class AppConstants {
 
   static const Color dividerColor = Color.fromRGBO(151, 151, 151, 0.5);
   static const Color filterColor = Color.fromRGBO(171, 40, 178, 0.5);
+  static const Color txtColor = Color.fromRGBO(151, 151, 151, 1);
+
+  // Animation Durations
+  static const Duration shortAnimation = Duration(milliseconds: 200);
+  static const Duration mediumAnimation = Duration(milliseconds: 300);
+  
+  // Spacing
+  static const double defaultSpacing = 16.0;
+  static const double smallSpacing = 8.0;
+  
+  // Border Radius
+  static const double borderRadius = 8.0;
+  static const double cardRadius = 12.0;
 }

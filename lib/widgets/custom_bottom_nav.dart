@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,12 +32,12 @@ class CustomBottomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildNavItem(
-            icon: CupertinoIcons.square_grid_2x2,
+            icon: Icons.inventory_2,
             label: 'Products',
             isSelected: selectedIndex == 0,
           ),
           _buildNavItem(
-            icon: CupertinoIcons.person,
+            icon: Icons.person,
             label: 'Profile',
             isSelected: selectedIndex == 1,
           ),

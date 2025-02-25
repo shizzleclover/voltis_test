@@ -21,6 +21,13 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - lib/core/Images/demo.png
+    - lib/core/Images/reply-arrow-icon.png
+    - lib/core/Images/profile.png
     - lib/core/Images/demo.png
     - lib/core/Images/avatar.png
+    - lib/core/helpers/fonts/Avenir.otf
+  fonts:
+    - family: Avenir
+      fonts:
+        - asset: lib/core/helpers/fonts/Avenir.otf
+
