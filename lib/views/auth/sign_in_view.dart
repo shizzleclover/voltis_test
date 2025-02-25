@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart'; // Add this import
 import 'package:voltis_test/widgets/custom_textfield.dart';
 
 import '../../core/router/routes.dart';
 import '../../core/utils/constants.dart';
+import '../../viewmodels/providers/theme_provider.dart'; // Add this import
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -27,12 +29,14 @@ class _SignInViewState extends State<SignInView> {
 
   void _handleLogin() {
     if (_formKey.currentState!.validate()) {
-      Navigator.pushReplacementNamed(context, Routes.productDetails);
+      Navigator.pushReplacementNamed(context, Routes.profilePage);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = context.watch<ThemeProvider>().isDarkMode; // Add this line
+    
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -57,6 +61,7 @@ class _SignInViewState extends State<SignInView> {
   }
 
   Widget _buildHeader() {
+    final isDarkMode = context.watch<ThemeProvider>().isDarkMode;  
     return Column(
       children: [
         SizedBox(height: 30.h),
@@ -65,6 +70,7 @@ class _SignInViewState extends State<SignInView> {
           style: GoogleFonts.inter(
             fontSize: 24.sp,
             fontWeight: FontWeight.w600,
+            color: isDarkMode ? AppConstants.voltisLight : AppConstants.voltisDark,
           ),
         ),
         SizedBox(height: 20.h),
@@ -73,6 +79,7 @@ class _SignInViewState extends State<SignInView> {
   }
 
   Widget _buildLoginForm() {
+    final isDarkMode = context.watch<ThemeProvider>().isDarkMode;  
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -80,6 +87,7 @@ class _SignInViewState extends State<SignInView> {
           'Login',
           style: GoogleFonts.inter(
             fontWeight: FontWeight.w600,
+            color: isDarkMode ? AppConstants.voltisLight : AppConstants.voltisDark,
             fontSize: 14.sp
           ),
         ),
@@ -132,6 +140,7 @@ class _SignInViewState extends State<SignInView> {
   }
 
   Widget _buildLoginButton() {
+    final isDarkMode = context.watch<ThemeProvider>().isDarkMode;  
     return ElevatedButton(
       onPressed: _handleLogin,
       style: ElevatedButton.styleFrom(
@@ -146,24 +155,41 @@ class _SignInViewState extends State<SignInView> {
         style: GoogleFonts.inter(
           fontSize: 16.sp,
           fontWeight: FontWeight.w600,
+          color: isDarkMode ? AppConstants.voltisLight : AppConstants.voltisDark,
         ),
       ),
     );
   }
 
   Widget _buildFooter() {
+    final isDarkMode = context.watch<ThemeProvider>().isDarkMode;
+    
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, '/sign_up');
       },
       child: Padding(
-        padding: EdgeInsets.only(top: 50.h),
-        child: Text(
-          'Don\'t Own an account? Sign Up',
-          style: GoogleFonts.inter(
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w500,
-            color: AppConstants.voltisAccent,
+        padding: EdgeInsets.only(top: 350.h),
+        child: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: 'Don\'t Own an account? ',
+                style: GoogleFonts.inter(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                  color: isDarkMode ? AppConstants.voltisLight : AppConstants.voltisDark,
+                ),
+              ),
+              TextSpan(
+                text: 'Sign Up',
+                style: GoogleFonts.inter(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                  color: AppConstants.voltisAccent,
+                ),
+              ),
+            ],
           ),
         ),
       ),

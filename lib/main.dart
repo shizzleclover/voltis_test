@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
           darkTheme: AppTheme.darkTheme(),
           themeMode: context.watch<ThemeProvider>().currentThemeMode,
           onGenerateRoute: AppRouter.generateRoute,
-          initialRoute: Routes.productDetails,
+          initialRoute: Routes.singIn,
         );
       },
     );
